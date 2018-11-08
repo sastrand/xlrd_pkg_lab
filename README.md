@@ -2,7 +2,7 @@
 
 This lab provides some practice working with library code in Python: 
 * creating a virtual environment (a package-level namespace you can manage seperately from your global set of packages) 
-* using the packages `xlrd` for reading and writing Microsoft Excel spreadsheets and `statistics` to describe the data you read.
+* using the packages [`xlrd`](https://xlrd.readthedocs.io/en/latest/) for reading and writing Microsoft Excel spreadsheets and [`statistics`](https://docs.python.org/3/library/statistics.html) to describe the data you read.
 
 <hr>
 
