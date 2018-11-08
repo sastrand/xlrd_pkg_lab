@@ -78,8 +78,8 @@ def nums_only_in_list(lst):
 
 
 if __name__ == "__main__":
-    wb = open_fish_file()
-    names = header_col_number_mapping(wb)
+    worksheet = open_fish_file()
+    names = header_col_number_mapping(worksheet)
 
     # Using the `statistics` package, find the mean and standard deviation
     # of the lengths of the fish in `pdx_fish.xls`, disregarding all
