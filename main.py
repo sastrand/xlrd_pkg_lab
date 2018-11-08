@@ -1,4 +1,4 @@
-# import the xlrd and statistics
+# import the packages `xlrd` and `statistics`
 
 
 def open_fish_file():
