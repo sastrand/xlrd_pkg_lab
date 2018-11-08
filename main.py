@@ -1,5 +1,6 @@
 # import the xlrd and statistics
-import xlrd, statistics
+import xlrd
+import statistics
 
 
 def open_fish_file():
@@ -7,7 +8,7 @@ def open_fish_file():
     Opens `pdx_fish.xls` and returns contents as column-major list of
     lists. Dates are left as floating point values in Excel's epoch format.
     """
-    pdx_fish_file = "./pdx_fish_test.xls"
+    pdx_fish_file = "./pdx_fish.xls"
 
     # open workbook, creating an object of the xlrd `Book` class
     # recommended xlrd function `open_workbook`
@@ -61,6 +62,11 @@ def print_worksheet_lol(worksheet_lol):
 
 
 def header_col_number_mapping(worksheet_lol):
+    """
+    Takes a worksheet in the form of a column-major list of lists
+    and returns a dictionary mapping the names of the columns to the
+    column numbers, indexed from zero.
+    """
     header_col_number_dict = dict()
     for col in range(len(worksheet_lol)):
         header_col_number_dict[worksheet_lol[col][0]] = col
@@ -68,25 +74,34 @@ def header_col_number_mapping(worksheet_lol):
 
 
 def nums_only_in_list(lst):
+    """
+    Takes a list of mixed data types and returns a list containing
+    only the `int` and `float` values in the original list.
+    """
     return [num for num in lst if isinstance(num, (int, float))]
 
 
 if __name__ == "__main__":
     wb = open_fish_file()
-    print(header_col_number_mapping(wb))
     names = header_col_number_mapping(wb)
 
     # Using the `statistics` package, find the mean and standard deviation
     # of the lengths of the fish in `pdx_fish.xls`, disregarding all
     # non-numeric values.
 
-    lengths = wb[names["fish_length_mm"]]
-    lengths = nums_only_in_list(lengths)
-    print(statistics.mean(lengths))
-    print(statistics.stdev(lengths))
+    lengths_all = wb[names["fish_length_mm"]]
+    lengths = nums_only_in_list(lengths_all)
+    print("mean fish length: " + str(statistics.mean(lengths)))
+    print("std dev of fish lengths: " + str(statistics.stdev(lengths)))
 
+    # From the file `pdx_fish.xls`, what is the largest Reticulate Sculpin
+    # obsverved? (again, disregarding non-numeric values)
 
-    # From the file `pdx_fish.xls`, what is the largest Reticulate sculpin
-    # obsverved?
+    sculpin_lengths = list()
 
-    
+    for r in range(len(wb[0])):
+        if (wb[names["common_name"]][r] == "Reticulate Sculpin"
+           and isinstance(wb[names["fish_length_mm"]][r], (int, float))):
+            sculpin_lengths.append(wb[names["fish_length_mm"]][r])
+
+    print("largest sculpin: " + str(max(sculpin_lengths)))
