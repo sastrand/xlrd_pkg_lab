@@ -20,7 +20,7 @@ This lab provides practice working with library code in Python:
 ```pip3 install xlrd```    
 ```pip3 install statistics```    
 
-* Follow the instructions inside `main.py` to complete the lab.
+* Follow the instructions inside `main.py` to complete the lab. You're welcome to change the code however you'd like, but you should only need to add code in the sections marked `[FILL IN HERE]`.
 
 * Deactivate your virtual environment.    
 ```deactivate```
