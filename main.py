@@ -1,5 +1,5 @@
-# import the xlrd package
-import xlrd
+# import the xlrd and statistics
+import xlrd, statistics
 
 
 def open_fish_file():
@@ -60,11 +60,33 @@ def print_worksheet_lol(worksheet_lol):
         print("\n")
 
 
-if __name__ == "__main__":
-    # pass tells the interpreter to do nothing in this block
-    pass
+def header_col_number_mapping(worksheet_lol):
+    header_col_number_dict = dict()
+    for col in range(len(worksheet_lol)):
+        header_col_number_dict[worksheet_lol[col][0]] = col
+    return header_col_number_dict
 
-    # From the file `pdx_fish.xls`, what is the average fish length observed
+
+def nums_only_in_list(lst):
+    return [num for num in lst if isinstance(num, (int, float))]
+
+
+if __name__ == "__main__":
+    wb = open_fish_file()
+    print(header_col_number_mapping(wb))
+    names = header_col_number_mapping(wb)
+
+    # Using the `statistics` package, find the mean and standard deviation
+    # of the lengths of the fish in `pdx_fish.xls`, disregarding all
+    # non-numeric values.
+
+    lengths = wb[names["fish_length_mm"]]
+    lengths = nums_only_in_list(lengths)
+    print(statistics.mean(lengths))
+    print(statistics.stdev(lengths))
+
 
     # From the file `pdx_fish.xls`, what is the largest Reticulate sculpin
     # obsverved?
+
+    
