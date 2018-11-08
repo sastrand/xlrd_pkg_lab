@@ -13,15 +13,16 @@ def open_fish_file():
     # [FILL IN HERE]
 
     # assign the first worksheet in the workbook you just created to the
-    # name `pdx_fish` recommended xlrd `Book` method: `sheet_by_index()`
+    # name `pdx_fish` recommended xlrd `Book` method: `sheet_by_index()`.
+    # This creates an object of type `Sheet`.
     # pdx_fish = [FILL IN HERE]
 
     # the number of columns in the worksheet
-    # recommended xlrd `Book` attribute : `ncols`
+    # recommended xlrd `Sheet` attribute : `ncols`
     # quant_columns = [FILL IN HERE]
 
     # the number of rows in the worksheet
-    # recommended xlrd `Book` attribute: `nrows`
+    # recommended xlrd `Sheet` attribute: `nrows`
     # quant_rows = [FILL IN HERE]
 
     # iterates through xlrd worksheet and copies values to list of lists
