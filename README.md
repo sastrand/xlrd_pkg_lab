@@ -1,6 +1,6 @@
 ## 'xlrd' Package Lab
 
-This lab provides practice working with library code in Python: 
+This lab provides some practice working with library code in Python: 
 * creating a virtual environment (a package-level namespace you can manage seperately from your global set of packages) 
 * using the packages `xlrd` for reading and writing Microsoft Excel spreadsheets and `statistics` to describe the data you read.
 
