@@ -3,7 +3,7 @@
 
 def open_fish_file():
     """
-    Opens `pdx_fish.xls` and returns contents as column-major list of
+    Opens `pdx_fish.xls` and returns contents as row-major list of
     lists. Dates are left as floating point values in Excel's epoch format.
     """
     pdx_fish_file = "./pdx_fish.xls"
@@ -47,7 +47,7 @@ def print_worksheet_xlrd(worksheet_xlrd):
 
 def print_worksheet_lol(worksheet_lol):
     """
-    Takes a worksheet in the form of a column-major list of lists
+    Takes a worksheet in the form of a row-major list of lists
     and prints each column to std out.
     """
     for col in range(len(worksheet_lol)):
@@ -58,7 +58,7 @@ def print_worksheet_lol(worksheet_lol):
 
 def header_col_number_mapping(worksheet_lol):
     """
-    Takes a worksheet in the form of a column-major list of lists
+    Takes a worksheet in the form of a row-major list of lists
     and returns a dictionary mapping the names of the columns to the
     column numbers, indexed from zero.
     """
